@@ -6,3 +6,4 @@
   ul
     li = link_to 'Widgets', widgets_path, class: "button nav #{controller_name == 'widgets' ? 'active' : ''}"
     li = link_to 'Profile', widgets_path, class: "button nav #{controller_name == 'users' ? 'active' : ''}"
+    li = link_to 'Log out', sessions_path, method: :delete, data: { confirm: 'Are you sure?' }

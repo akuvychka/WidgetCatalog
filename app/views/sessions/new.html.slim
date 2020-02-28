@@ -1,7 +1,7 @@
 .login-form
   h3 Sign in
 
-  = form_with(url: users_path) do |form|
+  = form_with(url: sessions_path, local: true) do |form|
     div.field
       = form.label :email
       = form.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email, e.g. user@gmail.com"
