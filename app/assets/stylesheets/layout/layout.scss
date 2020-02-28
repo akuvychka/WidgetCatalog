@@ -1,0 +1,70 @@
+body {
+  padding: 50px 50px 20px 50px;
+  @media screen and (max-width: 720px) {
+    padding: 10px;
+  }
+  font-family: $body-font-family;
+  color: $color-text;
+  letter-spacing: 0.05em;
+  background-color: rgba(12,12,17,1.00);
+  background: radial-gradient(14rem 8rem at bottom, rgba(9,30,35,1.00), rgba(13,18,26,1.00))
+}
+
+.container {
+  margin: auto;
+  max-width: 1400px;
+  min-height: calc(100vh - 43px);
+  padding: 10px;
+  display: grid;
+  align-items: top;
+
+  @media screen and (max-width: 400px) {
+    grid-auto-rows: auto 1fr 228px;
+  }
+
+  @media screen and (min-width: 401px) and (max-width: 720px) {
+    grid-auto-rows: auto 1fr 148px;
+  }
+
+  @media screen and (min-width: 721px) {
+    grid-auto-rows: auto 1fr 60px;
+  }
+}
+
+section {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr;
+  &.two-column {
+    @media screen and (max-width: 720px) {
+      grid-template-columns: 1fr;
+    }
+    @media screen and (min-width: 721px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+// Utility classes
+.mr5 {
+  margin-right: 5px;
+}
+
+.mb40 {
+  margin-bottom: 40px;
+}
+
+.gg0 {
+  grid-gap: 0;
+}
+
+.login {
+  margin: auto;
+  max-width: 1400px;
+  min-height: calc(100vh - 43px);
+  padding: 10px;
+  display: grid;
+  align-items: top;
+  grid-template-rows: 20% auto 20%;
+  grid-template-columns: 20% auto 20%;
+}

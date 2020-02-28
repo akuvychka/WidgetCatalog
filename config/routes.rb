@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'users#sign_in'
+  resources :users do
+    collection do
+      get 'sign_in', to: 'users#sign_in'
+    end
+  end
+  resources :widgets
 end

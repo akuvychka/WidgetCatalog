@@ -1,0 +1,8 @@
+.nav-logo
+  h1
+    | WM
+    span v1.0
+.nav-links
+  ul
+    li = link_to 'Widgets', widgets_path, class: "button nav #{controller_name == 'widgets' ? 'active' : ''}"
+    li = link_to 'Profile', widgets_path, class: "button nav #{controller_name == 'users' ? 'active' : ''}"

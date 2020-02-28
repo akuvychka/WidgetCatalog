@@ -1,0 +1,16 @@
+.login-form
+  h3 Sign in
+
+  = form_with(url: users_path) do |form|
+    div.field
+      = form.label :email
+      = form.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email, e.g. user@gmail.com"
+
+    div.field
+      = form.label :password
+      = form.password_field :password, autocomplete: "current-password" , placeholder: "Password"
+
+    div.actions
+      = form.submit "Sign in"
+      = link_to "Register", new_user_path, class: 'button'
+

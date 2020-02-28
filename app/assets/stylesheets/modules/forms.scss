@@ -1,0 +1,80 @@
+input[type="text"], input[type="password"], input[type="email"], textarea {
+  width: calc(100% - 22px);
+  padding: 15px;
+  background-color: rgb(23, 23, 33);
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  font-size: 16px;
+  border: none;
+  color: $color-text-strong;
+  border-radius: 4px;
+  &:focus {
+    border: 1px solid $color-text-strong;
+  }
+  &::-webkit-input-placeholder {
+    color: $color-cta-weak;
+  }
+  &::-moz-placeholder {
+    color: $color-cta-weak;
+  }
+  &:-ms-input-placeholder {
+    color: $color-cta-weak;
+  }
+  &:-moz-placeholder {
+    color: $color-cta-weak;
+  }
+}
+
+select {
+  text-align: left;
+  background-color: $color-border-weak;
+  color: $color-text;
+  height: 40px;
+  font-size: 16px;
+  border: 1px solid $color-border-weak;
+}
+
+form {
+  margin-top: 20px;
+  .field {
+    margin-bottom: 30px;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.login-form, .create-user-form {
+  grid-area: content;
+  grid-column-start: 2;
+  grid-row-start: 2;
+  display: grid;
+  grid-template-rows: 15% auto;
+  grid-template-columns: 10% auto 10%;
+  h3 {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    justify-self: center;
+    text-align: center;
+  }
+  form {
+    justify-self: center;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    min-width: 80%;
+    .actions {
+      display: block;
+      text-align: center;
+      justify-self: center;
+      input {
+        min-width: 55%;
+      }
+    }
+  }
+}
+
+.toggle {
+  display: none;
+}

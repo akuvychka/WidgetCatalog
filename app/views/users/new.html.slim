@@ -1,0 +1,20 @@
+.create-user-form
+  h3 Register new user
+  = form_with(url: users_path, local: true) do |form|
+    div.field
+      =form.label :first_name
+      =form.text_field :first_name
+    div.field
+      = form.label :last_name
+      = form.text_field :last_name
+    div.field
+      = form.label :email
+      = form.email_field :email
+    div.field
+      = form.label :password
+      = form.text_field :password
+    div.field
+      = form.label :image_url
+      = form.text_field :image_url
+    div.actions
+      = form.submit "Create"
