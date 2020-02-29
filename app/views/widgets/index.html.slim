@@ -1,3 +1,8 @@
 = render "shared/navigation"
+header.page-header
+  div
+    h3 Widgets
 .content
-  | table will be here
+  .cards-index
+    - @widgets.each do | widget |
+      = render 'widget', widget: widget

@@ -11,6 +11,7 @@ class ApiRequestService
 
   def get
     begin
+      @header[:params] = @data if @data.present?
       res = RestClient.get ENV['API_HOST'] + @type + @command, @header
       puts res
       JSON.parse(res.body)

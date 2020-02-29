@@ -1,0 +1,49 @@
+.card {
+  position: relative;
+  display: grid;
+  padding: 20px;
+  min-height: 150px;
+  background-color: rgb(23, 23, 33);
+  box-shadow: rgb(34, 34, 48) 0px -1px 0px 0px, rgb(2, 2, 3) 0px 1px 0px 0px;
+  grid-template-rows: 1fr 50px 100px;
+  grid-template-columns: 60% 40%;
+  width: 2fr;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  grid-template-areas:
+          "widget-name widget-visibility"
+          "widget-description widget-description "
+          "owner-photo owner-name";
+  &:hover {
+    > .trash-icon {
+      display: block;
+    }
+  }
+}
+
+.widget-name {
+  grid-area: widget-name;
+}
+
+.widget-description {
+  grid-area: widget-description;
+}
+
+.widget-visibility {
+  grid-area: widget-visibility;
+  align-self: start;
+  text-align: end;
+}
+
+.owner-name {
+  grid-area: owner-name;
+}
+
+
+.owner-photo {
+  grid-area: owner-photo;
+  img {
+    max-width: 100px;
+    max-height: 100px;
+  }
+}
