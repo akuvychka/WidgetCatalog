@@ -72,7 +72,7 @@ footer {
     grid-template-columns: 20% 30% auto;
     grid-template-rows: 100px 100px 100px auto 100px;;
     grid-template-areas:
-      "logo logo notification"
+      "logo notification notification"
       "links links links"
       "page-header page-header page-header"
       "content content content"

@@ -31,8 +31,8 @@ class SessionsController < ApplicationController
         SessionsController.store_session(res['data']['token'], session)
         format.html { redirect_to widgets_path, notice: 'Logged in successfully.' }
       else
-        format.html { render :new }
-        format.json { render json: {error: 'Some error, will remove later'}, status: :unprocessable_entity }
+        error_handler(response)
+        format.html { redirect_to new_session_path, notice: 'Wrong user email or password' }
       end
     end
   end

@@ -1,0 +1,10 @@
+.create-user-form
+  h3 Password reset
+  = form_with(url: restore_password_path, local: true) do |form|
+    div.field
+      = form.label :input_email_for_password_reset
+      = form.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email, e.g. user@gmail.com"
+
+    div.actions
+      = form.submit "Restore password"
+      = link_to "Cancel", new_session_path, class: 'button'

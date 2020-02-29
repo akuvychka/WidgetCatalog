@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :new, :edit, :update] do
     collection do
       get 'me', to: 'users#me'
-      get 'change_password', to: 'users#edit_password'
-      put 'change_password', to: 'users#save_password'
     end
   end
   resources :widgets
@@ -12,5 +10,9 @@ Rails.application.routes.draw do
     collection do
       delete :destroy, to: 'sessions#destroy'
     end
+  end
+  resource :password, only: [:update, :edit] do
+    get 'forgot', to: 'passwords#forgot'
+    post 'restore', to: 'passwords#restore'
   end
 end

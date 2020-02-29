@@ -78,10 +78,10 @@ label {
       }
     }
   }
-}
-
-.toggle {
-  display: none;
+  #notice {
+    grid-area: footer;
+    text-align: center;
+  }
 }
 
 #error_explanation {
@@ -91,4 +91,9 @@ label {
     margin-top: 10px;
     margin-left: 10px;
   }
+}
+
+.forgot-pass {
+  text-align: right;
+  font-size: small;
 }

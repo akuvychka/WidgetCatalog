@@ -15,7 +15,7 @@ class ApiRequestService
       puts res
       JSON.parse(res.body)
     rescue RestClient::ExceptionWithResponse => err
-      puts err.message
+      JSON.parse(err.response)
     end
   end
 
@@ -25,7 +25,7 @@ class ApiRequestService
       puts res
       JSON.parse(res.body)
     rescue RestClient::ExceptionWithResponse => err
-      puts err.message
+      JSON.parse(err.response)
     end
   end
 
@@ -35,7 +35,7 @@ class ApiRequestService
       puts res
       JSON.parse(res.body)
     rescue RestClient::ExceptionWithResponse => err
-      puts err.message
+      JSON.parse(err.response)
     end
   end
 end

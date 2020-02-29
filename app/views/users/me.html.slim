@@ -4,7 +4,7 @@ header.page-header
     h3 Personal information
   div
     = link_to 'Edit', edit_user_path(@user['id']), class: 'button'
-    = link_to 'Change Password', change_password_users_path, class: 'button'
+    = link_to 'Change Password', edit_password_path, class: 'button'
 .content
   div
   -if @user.present?
@@ -20,7 +20,7 @@ header.page-header
         dd= @user['last_name']
 
         dt Date of birth
-        dd= @user['date_of_birth']
+        dd= Date.strptime(@user['date_of_birth'].to_s, '%s')
 
         dt Email
         dd= @user['email']
