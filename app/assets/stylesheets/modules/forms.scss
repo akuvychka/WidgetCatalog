@@ -46,13 +46,18 @@ label {
   margin-bottom: 10px;
 }
 
-.login-form, .create-user-form {
+.create-user-form {
+  grid-area: links;
+}
+
+.login-form {
   grid-area: content;
-  grid-column-start: 2;
-  grid-row-start: 2;
+}
+
+.login-form, .create-user-form {
   display: grid;
   grid-template-rows: 15% auto;
-  grid-template-columns: 10% auto 10%;
+  grid-template-columns: 25% auto 25%;
   h3 {
     grid-column-start: 2;
     grid-row-start: 1;
@@ -77,4 +82,13 @@ label {
 
 .toggle {
   display: none;
+}
+
+#error_explanation {
+  display: flex;
+  flex-direction: row;
+  div {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
 }

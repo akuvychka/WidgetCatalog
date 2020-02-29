@@ -1,0 +1,28 @@
+= render "shared/navigation"
+header.page-header
+  div
+    h3 Personal information
+  div
+    = link_to 'Edit', edit_user_path(@user['id']), class: 'button'
+    = link_to 'Change Password', change_password_users_path, class: 'button'
+.content
+  div
+  -if @user.present?
+    section
+      dl
+        dt Personal photo
+        dd = image_tag @user['images']['original_url']
+
+        dt First name
+        dd= @user['first_name']
+
+        dt Last Name
+        dd= @user['last_name']
+
+        dt Date of birth
+        dd= @user['date_of_birth']
+
+        dt Email
+        dd= @user['email']
+  -else
+    | There is a problem with showing personal information. Please try later

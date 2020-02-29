@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root to: 'sessions#new'
-  resources :users do
+  resources :users, only: [:create, :new, :edit, :update] do
     collection do
-      get 'sign_in', to: 'users#sign_in'
+      get 'me', to: 'users#me'
+      get 'change_password', to: 'users#edit_password'
+      put 'change_password', to: 'users#save_password'
     end
   end
   resources :widgets

@@ -62,11 +62,4 @@ class SessionsController < ApplicationController
         'password': params[:password]
     }
   end
-
-  def header
-    {
-        'Content-Type': 'application/json',
-        'Authorization': session['token_type'] + ' ' + session[:access_token]
-    }
-  end
 end

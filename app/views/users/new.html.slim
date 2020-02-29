@@ -1,5 +1,6 @@
 .create-user-form
   h3 Register new user
+  = render "shared/error_handler"
   = form_with(url: users_path, local: true) do |form|
     div.field
       =form.label :first_name
@@ -18,3 +19,4 @@
       = form.text_field :image_url
     div.actions
       = form.submit "Create"
+      = link_to 'Sing in', new_session_path, class: 'button'

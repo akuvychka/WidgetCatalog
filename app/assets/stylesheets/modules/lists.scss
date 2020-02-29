@@ -1,0 +1,18 @@
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+dt {
+  color: $color-text-weak;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+dd {
+  margin: 0;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $color-border-weak;
+  margin-bottom: 20px;
+}

@@ -1,0 +1,18 @@
+.page-header {
+  grid-area: page-header;
+  padding-bottom: 10px;
+  border-bottom: 2px solid $color-border-weak;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  > div {
+    vertical-align: middle;
+    display: inline;
+  }
+  > div:nth-child(2) {
+    text-align: right;
+    grid-column-start: 2;
+  }
+  h3 {
+    margin: 0;
+  }
+}

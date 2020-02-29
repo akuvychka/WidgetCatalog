@@ -5,6 +5,15 @@
 
 require("@rails/ujs").start();
 require("@rails/activestorage").start();
+require('jquery');
+//= require moment
+//= require bootstrap-datetimepicker
+
+$(function () {
+    $('#datepicker').datetimepicker({
+        format: 'LT'
+    });
+});
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference

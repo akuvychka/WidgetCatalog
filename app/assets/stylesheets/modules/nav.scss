@@ -28,7 +28,7 @@ footer {
   display: grid;
   margin-top: 0;
   margin-bottom: 0;
-  align-items: center;
+  align-items: start;
 
   /* small */
   @media screen and (max-width: 440px) {
@@ -36,9 +36,8 @@ footer {
     grid-template-areas:
       "logo"
       "links"
-      "search"
+      "notification"
       "page-header"
-      "create"
       "content"
       "footer";
     .nav-links > ul {
@@ -55,9 +54,8 @@ footer {
     grid-template-areas:
       "logo"
       "links"
-      "search"
+      "notification"
       "page-header"
-      "create"
       "content"
       "footer";
     .nav-links > ul {
@@ -74,9 +72,9 @@ footer {
     grid-template-columns: 20% 30% auto;
     grid-template-rows: 100px 100px 100px auto 100px;;
     grid-template-areas:
-      "logo logo search"
+      "logo logo notification"
       "links links links"
-      "page-header page-header create"
+      "page-header page-header page-header"
       "content content content"
       "footer footer footer";
     .nav-search {

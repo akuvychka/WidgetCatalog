@@ -1,0 +1,26 @@
+= render "shared/navigation"
+header.page-header
+  h3 Personal information
+
+.content
+  = render "shared/error_handler"
+  div
+    = form_with(url: user_path, method: :put, local: true) do |form|
+      div.field
+        = form.label :first_name
+        = form.text_field :first_name, value: @user['first_name']
+      div.field
+        = form.label :last_name
+        = form.text_field :last_name, value: @user['last_name']
+      div.field
+        = form.label :email
+        = form.email_field :email, value: @user['email']
+      div.field
+        = form.label :date_of_birth
+        = form.text_field :date_of_birth, value: @user['date_of_birth'], id: 'datepicker', class: 'form-control'
+      div.field
+        = form.label :image_url
+        = form.text_field :image_url, value: @user['images']['original_url']
+      div.actions
+        = form.submit "Update"
+        = link_to 'Cancel', me_users_path, class: 'button'
