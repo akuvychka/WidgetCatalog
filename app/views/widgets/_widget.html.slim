@@ -3,7 +3,7 @@
     = link_to widget['name'], edit_widget_path(widget['id'])
   .widget-description
     hr
-    = widget['description']
+    div = widget['description']
     hr
   .widget-visibility
     -if widget['kind']
@@ -17,4 +17,4 @@
   .owner-photo
     = image_tag widget['user']['images']['small_url']
   - if widget['owner']
-    = link_to '', widgets_path(widget['id']), method: :delete, remote: true, data: { confirm: 'Are you want to remove this block from the feature?' }, class: 'trash-icon'
+    = link_to '', widgets_path(widget['id']), method: :delete, remote: true, data: { confirm: 'Are you want to remove this widget?' }, class: 'trash-icon'

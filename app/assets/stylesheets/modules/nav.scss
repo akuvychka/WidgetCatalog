@@ -24,6 +24,10 @@ footer {
   grid-area: create;
 }
 
+.search {
+  grid-area: search;
+}
+
 .container {
   display: grid;
   margin-top: 0;
@@ -37,6 +41,7 @@ footer {
       "logo"
       "links"
       "notification"
+      "search"
       "page-header"
       "content"
       "footer";
@@ -55,6 +60,7 @@ footer {
       "logo"
       "links"
       "notification"
+      "search"
       "page-header"
       "content"
       "footer";
@@ -73,7 +79,7 @@ footer {
     grid-template-rows: 100px 100px 100px auto 100px;;
     grid-template-areas:
       "logo notification notification"
-      "links links links"
+      "links links search"
       "page-header page-header page-header"
       "content content content"
       "footer footer footer";

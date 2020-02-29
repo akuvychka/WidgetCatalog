@@ -6,7 +6,25 @@ class WidgetsController  < ApplicationController
   def index
   end
 
+  def new
+  end
+
   def edit
+  end
+
+  def show
+  end
+
+  def create
+    response = ApiRequestService.new(ApiRequestService::API_REQUEST_TYPE, 'widgets', header, new_widget_params).post
+    if response && response['code'].to_i == 0
+      redirect_to widgets_path, notice: response['message']
+    else
+      error_handler(response)
+    end
+  end
+
+  def delete
   end
 
   private
@@ -30,5 +48,15 @@ class WidgetsController  < ApplicationController
   end
 
   def get_widget
+  end
+
+  def new_widget_params
+    {
+        widget: {
+            name: params['name'],
+            description: params['description'],
+            kind: params['visibility'] ? "visible" : "hidden"
+        }
+    }
   end
 end

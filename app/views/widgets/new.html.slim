@@ -1,0 +1,17 @@
+= render "shared/navigation"
+header.page-header
+  h3 Create mew widget
+.content
+  = form_with(url: widgets_path, method: :post, local: true) do |form|
+    div.field
+      = form.label :widget_name
+      = form.text_field :name
+    div.field
+      = form.label :description
+      = form.text_area :description
+    div.field.toggle-group
+      = form.label :visibility
+      = form.check_box :visibility
+      = form.label :visibility, class: "toggle"
+    div.actions
+      = form.submit 'Create'

@@ -39,6 +39,10 @@ form {
   .field {
     margin-bottom: 30px;
   }
+  textarea {
+    min-height: 100px;
+    resize: none;
+  }
 }
 
 label {
@@ -96,4 +100,89 @@ label {
 .forgot-pass {
   text-align: right;
   font-size: small;
+}
+
+.search-form {
+  margin-top: 0;
+  display: grid;
+  grid-column-gap: 20px;
+  grid-template-columns: 5fr 1fr;
+  input[type='text'] {
+    &:focus {
+      border: 1px solid $color-text-strong;
+    }
+    &::-webkit-input-placeholder {
+      color: $color-text-weak;
+    }
+    &::-moz-placeholder {
+      color: $color-text-weak;
+    }
+    &:-ms-input-placeholder {
+      color: $color-text-weak;
+    }
+    &:-moz-placeholder {
+      color: $color-text-weak;
+    }
+  }
+  .button {
+    display: inline-block;
+    height: 100%;
+    background: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.10em;
+    &:hover {
+      border: 1px solid $color-text-strong;
+    }
+    @media screen and (min-width: 721px) {
+      font-size: 16px;
+    }
+  }
+}
+
+div.field input[type=checkbox]{
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+.toggle {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 50px;
+  height: 30px;
+  background: $color-border-weak;
+  display: block;
+  border-radius: 25px;
+  position: relative;
+}
+
+.toggle:after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 24px;
+  height: 24px;
+  background: #fff;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+input:checked + .toggle {
+  background: $color-text-weak;
+}
+
+input:checked + .toggle:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+.toggle-group {
+  display: flex;
+  flex-direction: row;
+  :nth-child(1) {
+    padding-top: 5px;
+    padding-right: 10px;
+  }
 }
