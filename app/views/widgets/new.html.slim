@@ -2,6 +2,7 @@
 header.page-header
   h3 Create mew widget
 .content
+  = render "shared/error_handler"
   = form_with(url: widgets_path, method: :post, local: true) do |form|
     div.field
       = form.label :widget_name

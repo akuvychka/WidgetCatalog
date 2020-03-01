@@ -5,14 +5,17 @@
 
 require("@rails/ujs").start();
 require("@rails/activestorage").start();
-require('jquery');
+import $ from 'jquery';
+
 //= require moment
 //= require bootstrap-datetimepicker
 
+window.hideWidget = function(widgetId) {
+    $(`#widget_${widgetId}`).fadeOut();
+};
+
 $(function () {
-    $('#datepicker').datetimepicker({
-        format: 'LT'
-    });
+
 });
 
 

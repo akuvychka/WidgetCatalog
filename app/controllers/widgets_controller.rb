@@ -1,7 +1,8 @@
 class WidgetsController  < ApplicationController
   before_action :authenticate_user!
-  before_action :get_widgets
-  before_action :get_widget, only:[:edit]
+  before_action :get_widgets, only: [:index, :destroy]
+  before_action :get_widget, only: [:edit]
+  before_action :get_id, only: [:destroy]
 
   def index
   end
@@ -17,20 +18,30 @@ class WidgetsController  < ApplicationController
 
   def create
     response = ApiRequestService.new(ApiRequestService::API_REQUEST_TYPE, 'widgets', header, new_widget_params).post
-    if response && response['code'].to_i == 0
-      redirect_to widgets_path, notice: response['message']
-    else
-      error_handler(response)
+    respond_to do |format|
+      if response && response['code'].to_i == 0
+        format.html { redirect_to widgets_path, notice: response['message'] }
+      else
+        error_handler(response)
+        format.html { render new_widget_path }
+      end
     end
   end
 
-  def delete
+  def destroy
+    response = ApiRequestService.new(ApiRequestService::API_REQUEST_TYPE, "widgets/#{@id}", header).delete
+    respond_to do |format|
+      unless response && response['code'].to_i == 0
+        error_handler(response)
+      end
+      format.js
+    end
   end
 
   private
 
   def get_widgets
-    response = ApiRequestService.new(ApiRequestService::API_REQUEST_TYPE, 'widgets/visible', auth_header, widgets_params(params[:search])).get
+    response = ApiRequestService.new(ApiRequestService::API_REQUEST_TYPE, 'widgets/visible', header, widgets_params(params[:search])).get
     if response && response['code'].to_i == 0
       @widgets = response['data']['widgets']
     else
@@ -55,8 +66,12 @@ class WidgetsController  < ApplicationController
         widget: {
             name: params['name'],
             description: params['description'],
-            kind: params['visibility'] ? "visible" : "hidden"
+            kind: params['visibility'].to_i == 0 ? "hidden" : "visible"
         }
     }
+  end
+
+  def get_id
+    @id = params[:id]
   end
 end

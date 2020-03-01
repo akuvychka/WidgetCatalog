@@ -23,8 +23,11 @@ class ApplicationController < ActionController::Base
   end
 
   def error_handler(response)
+    puts response
     if response['code'].to_i == 10
       redirect_to new_session_path, notice: "Your session was expired. Please sign in"
+    elsif response['code'].to_i == 3
+      @error = response
     end
   end
 

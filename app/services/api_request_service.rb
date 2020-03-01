@@ -39,4 +39,14 @@ class ApiRequestService
       JSON.parse(err.response)
     end
   end
+
+  def delete
+    begin
+      res = RestClient.delete ENV['API_HOST'] + @type + @command, @header
+      puts res
+      JSON.parse(res.body)
+    rescue RestClient::ExceptionWithResponse => err
+      JSON.parse(err.response)
+    end
+  end
 end
