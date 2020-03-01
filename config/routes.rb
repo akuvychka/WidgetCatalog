@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :new, :edit, :update] do
     collection do
       get 'me', to: 'users#me'
+      get 'check_email', to: 'users#check_email'
     end
   end
   resources :widgets

@@ -15,7 +15,18 @@ window.hideWidget = function(widgetId) {
 };
 
 $(function () {
+    $("#check_email").on("click", function(event) {
+        event.preventDefault();
+        var val = $("#email").val();
 
+        $.get('/users/check_email', { email: val }, function(data) {
+            if (data['available']) {
+                document.getElementById("email").classList.add('available')
+            } else {
+                document.getElementById("email").classList.add('forbidden');
+            }
+        });
+    });
 });
 
 

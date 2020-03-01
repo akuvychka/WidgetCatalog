@@ -11,6 +11,8 @@
     div.field
       = form.label :email
       = form.email_field :email
+      .check-email
+        = link_to 'check availability','', id: "check_email"
     div.field
       = form.label :password
       = form.text_field :password

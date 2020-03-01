@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :get_personal_info, only: [:me, :edit]
-  before_action :authenticate_user!, except: [:new, :create]
+  before_action :authenticate_user!, except: [:new, :create, :check_email]
 
   def new
   end
@@ -38,6 +38,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def check_email
+    response = ApiRequestService.new(ApiRequestService::API_REQUEST_TYPE, 'users/email', {}, check_email_params).get
+    respond_to do |format|
+      if response && response['code'].to_i == 0
+        format.json { render json: response['data'] , status: :ok }
+      else
+        error_handler(response)
+        format.json { render json: { 'error': response['message'] } , status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
 
   def new_user_params
@@ -51,6 +63,14 @@ class UsersController < ApplicationController
   def update_user_params
     {
         'user': params.permit('first_name', 'last_name', 'email', 'date_of_birth', 'image_url')
+    }
+  end
+
+  def check_email_params
+    {
+        'client_id': ENV['CLIENT_ID'],
+        'client_secret': ENV['CLIENT_SECRET'],
+        'email': params['email']
     }
   end
 

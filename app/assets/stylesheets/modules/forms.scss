@@ -23,6 +23,12 @@ input[type="text"], input[type="password"], input[type="email"], textarea {
   &:-moz-placeholder {
     color: $color-cta-weak;
   }
+  &.available {
+    border: 2px solid $color-text-strong;
+  }
+  &.forbidden {
+    border: 2px solid $color-text-red;
+  }
 }
 
 select {
@@ -51,7 +57,8 @@ label {
 }
 
 .create-user-form {
-  grid-area: links;
+  grid-area: notification;
+  grid-column-start: 1;
 }
 
 .login-form {
@@ -97,7 +104,7 @@ label {
   }
 }
 
-.forgot-pass {
+.forgot-pass, .check-email {
   text-align: right;
   font-size: small;
 }
