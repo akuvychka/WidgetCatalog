@@ -20,10 +20,23 @@ class WidgetsController  < ApplicationController
     response = ApiRequestService.new(ApiRequestService::API_REQUEST_TYPE, 'widgets', header, new_widget_params).post
     respond_to do |format|
       if response && response['code'].to_i == 0
-        format.html { redirect_to widgets_path, notice: response['message'] }
+        format.html { redirect_to my_widgets_path, notice: response['message'] }
       else
         error_handler(response)
         format.html { render new_widget_path }
+      end
+    end
+  end
+
+  def update
+    response = ApiRequestService.new(ApiRequestService::API_REQUEST_TYPE, "widgets/#{params['widget_id']}", header, update_widget_params).put
+    respond_to do |format|
+      if response && response['code'].to_i == 0
+        format.html { redirect_to my_widgets_path, notice: response['message'] }
+      else
+        error_handler(response)
+        @widget = params
+        format.html { redirect_to edit_widget_path(@widget['name']) }
       end
     end
   end
@@ -59,6 +72,13 @@ class WidgetsController  < ApplicationController
   end
 
   def get_widget
+    response = ApiRequestService.new(ApiRequestService::API_REQUEST_TYPE, 'users/me/widgets', header, widgets_params(params[:id])).get
+    if response && response['code'].to_i == 0
+      @widget = response['data']['widgets'][0]
+      @widget['widget_id'] = @widget['id']
+    else
+      error_handler(response)
+    end
   end
 
   def new_widget_params
@@ -67,6 +87,15 @@ class WidgetsController  < ApplicationController
             name: params['name'],
             description: params['description'],
             kind: params['visibility'].to_i == 0 ? "hidden" : "visible"
+        }
+    }
+  end
+
+  def update_widget_params
+    {
+        widget: {
+            name: params['name'],
+            description: params['description']
         }
     }
   end

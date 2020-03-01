@@ -6,13 +6,13 @@ header.page-header
   = form_with(url: widgets_path, method: :post, local: true) do |form|
     div.field
       = form.label :widget_name
-      = form.text_field :name
+      = form.text_field :name, value: params[:name].present? ? params[:name] : ''
     div.field
       = form.label :description
-      = form.text_area :description
+      = form.text_area :description, value: params[:description].present? ? params[:description] : ''
     div.field.toggle-group
       = form.label :visibility
-      = form.check_box :visibility
+      = form.check_box :visibility, value: params[:visibility].present? ? params[:visibility] : ''
       = form.label :visibility, class: "toggle"
     div.actions
       = form.submit 'Create'

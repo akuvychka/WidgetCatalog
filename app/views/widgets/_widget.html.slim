@@ -1,12 +1,15 @@
 = tag.div class: 'card', id: "widget_#{widget['id']}" do
   .widget-name
-    = link_to widget['name'], edit_widget_path(widget['id'])
+    -if widget['owner']
+      = link_to widget['name'], edit_widget_path(widget['name'])
+    -else
+      = widget['name']
   .widget-description
     hr
     div = widget['description']
     hr
   .widget-visibility
-    -if widget['kind']
+    -if widget['kind'] == 'visible'
       i.fa.fa-eye
     -else
       i.fa.fa-eye-slash

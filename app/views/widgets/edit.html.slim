@@ -1,6 +1,16 @@
 = render "shared/navigation"
 header.page-header
   div
-    h3 Widget
+    h3 Edit widget
 .content
-  | widget content
+  = render "shared/error_handler"
+  = form_with(url: widget_path, method: :put, local: true) do |form|
+    = form.hidden_field(:widget_id, value: @widget['widget_id'])
+    div.field
+      = form.label :widget_name
+      = form.text_field :name, value: @widget['name']
+    div.field
+      = form.label :description
+      = form.text_area :description, value: @widget['description']
+    div.actions
+      = form.submit 'Update'

@@ -5,7 +5,8 @@ Rails.application.routes.draw do
       get 'me', to: 'users#me'
     end
   end
-  resources :widgets, except: [:show]
+  resources :widgets
+  resources :my_widgets
   resources :sessions, only: [:new, :create] do
     collection do
       delete :destroy, to: 'sessions#destroy'

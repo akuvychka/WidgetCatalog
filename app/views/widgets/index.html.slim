@@ -5,10 +5,13 @@ header.page-header
   div
     = link_to 'Create new widget', new_widget_path, class: 'button'
 .search
-  = form_tag("widgets", method: :get, class: 'search-form') do
+  = form_tag(controller_name, method: :get, class: 'search-form') do
     = text_field_tag :search, nil, placeholder: "Search widgets", class: ''
     = submit_tag 'Search', class: 'button'
 .content
   .cards-index
-    - @widgets.each do | widget |
-      = render 'widget', widget: widget
+    - if @widgets.length > 0
+      - @widgets.each do | widget |
+        = render 'widget', widget: widget
+    - else
+      | There are no widgets to show. Please, change search conditions
