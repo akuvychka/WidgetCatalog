@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Download the project
+Use  `git clone` or extract from an archive
 
-Things you may want to cover:
+#### Set ruby version
 
-* Ruby version
+`rvm use 2.5.6 (or any another method)`
 
-* System dependencies
+#### Run bundle and yarn check files
 
-* Configuration
+`bundle install`
 
-* Database creation
+`yarn install --check-files`
 
-* Database initialization
+#### Run rail server
 
-* How to run the test suite
+`rails s`
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Open link in any browser
 
-* Deployment instructions
 
-* ...
+`http://127.0.0.1:3000/`
+
+#### Heroku
+
+Application also deployed to Heroku, use following lick for access
+`https://widgetscatalog.herokuapp.com`
